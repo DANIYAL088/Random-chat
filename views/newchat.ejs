@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 3px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        padding-bottom: 5rem;
+        background-color: #121212;
+      }
+      form {
+        padding: 20px;
+        height: 300px;
+        background-color: #232323;
+        box-shadow: 0 0 10px rgb(111, 109, 109);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: nowrap;
+        border-radius: 10px;
+      }
+      input {
+        margin: 10px;
+        height: 20px;
+        border-radius: 5px;
+        border: none;
+        padding: 5px;
+        padding-left: 7px;
+        font-size: 17px;
+        background-color: #121212;
+        color: white;
+      }
+      textarea {
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #121212;
+        color: white;
+      }
+      button {
+        margin-top: 20px;
+        height: 30px;
+        width: 160px;
+        font-size: 17px;
+        background-color: white;
+        border: 1px solid black;
+        cursor: pointer;
+        border-radius: 5px;
+        background-color: #121212;
+        color: white;
+      }
+      input:active {
+        border: none;
+      }
+      h1 {
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Create a new chat</h1>
+    <form action="http://localhost:8080/newchat" method="post">
+      <div class="users">
+        <input type="text" name="from" placeholder="From.." required />
+        <input type="text" name="to" placeholder="To.." required />
+      </div>
+      <textarea
+        id=""
+        cols="59"
+        rows="11"
+        placeholder="Meassage"
+        name="msg"
+        required
+      ></textarea>
+      <button>Submit</button>
+    </form>
+  </body>
+</html>

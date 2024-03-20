@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+      body {
+        margin: 3px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        padding-bottom: 5rem;
+        background-color: #121212
+      }
+      .card {
+        margin: 20px;
+        padding: 10px;
+        display: inline-block;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 10px;
+        background-color: #23232378;;
+        margin-bottom: 0;
+        max-width: 300px;
+        min-width: 200px;
+        box-shadow: 0 0 0 .1px black;
+        color: white;
+      }
+      #msg {
+        padding: 10px;
+        background-color: rgb(49, 49, 255);
+        color: white;
+        border-radius: 10px;
+        font-weight: bold;
+      }
+      .card:hover {
+        transform: scale(1.01);
+      }
+      .header {
+        border: 1px solid black;
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        font-size:2rem;
+        font-weight: 800;
+        background-color: #232323;
+        color: white;
+        box-shadow: 0 0 0 .1px white;
+      }
+      #new {
+        margin-top: 20px;
+        height: 30px;
+        width: 160px;
+        font-size: 17px;
+        border: 1px solid black;
+        border-radius: 5px;
+      }
+      #form {
+        position: relative;
+        top: -45px;
+        left: 90%;
+        width: 30px;
+        background-color: black;
+        border-radius: 50%;
+      }
+      #del{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: .1px solid black;
+        cursor: pointer;
+      }
+      #del i{
+        font-weight: lighter;
+        font-size: 25px;
+      }
+      .time{
+        width: 100%;
+        display: flex;
+        justify-content: end;
+      }
+      .time p{
+        font-size: .9rem;
+        margin: 0;
+      }
+      form button{
+        background-color: #121212;
+        color: white;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="header">Random chats</div>
+    <form action="http://localhost:8080/chat/newchat" method="get" >
+      <button id="new">New chat</button>
+    </form>
+    <% for (const chat of chats) { %>
+    <div class="card">
+      <p id="ha">From: <b><%= chat.from %></b> <form action="/chat/<%=chat._id%>?_method=DELETE" method="post" id="form"><button id="del"><i class='bx bx-x'></i></button></form></p>
+      <p style="margin-top: 0;">To: <b> <%= chat.to %></b></p>
+      <p id="msg"><%= chat.msg %></p>
+      <div class="time"><p><%= chat.create_at.toString().split(" ")[4] %></p></div>
+    </div>
+    <br />
+    <% } %>
+  </body>
+</html>
